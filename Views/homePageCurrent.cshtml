@@ -1,16 +1,14 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-    Layout = null;
-}
+    Layout = "/Views/Shared/_LayoutMain.cshtml";
 
-@section Styles {
-<link rel="stylesheet" href="/css/HomePage.css" />
+    <link rel="stylesheet" href="/css/HomePage.css" />
 }
-
 
 <section class="welcome-section">
-    <h1>@Model.Value("welcomeTitle")</h1>
+    <img>@Model.Value("backgroundImage")</img>
+    <h1 class="MainTitle">@Model.Value("welcomeTitle")</h1>
     <p>@Model.Value("welcomeText")</p>
 
     @{
@@ -21,4 +19,9 @@
     {
         <img src="@image.Url()" alt="@image.Name" />
     }
+</section>
+
+@* School Mission & School Vision *@
+<section class="schoolm-schoolv">
+
 </section>

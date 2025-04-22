@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/css/shared.css" />
+    <link rel="stylesheet" href="~/css/shared.css" />
 </head>
 
 <body>
 
-    @Html.Partial("_LayoutSharedNavbar") <!-- Inkluder navbar -->
+    @Html.Partial("~/Views/Shared/_LayoutSharedNavbar.cshtml")
 
     <main>
-        @RenderBody() <!-- Indhold fra din side -->
+        @RenderBody()
     </main>
 
 </body>
