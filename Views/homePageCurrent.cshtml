@@ -1,0 +1,23 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = null;
+}
+
+<section class="welcome-section">
+    <h1>@Model.Value("welcomeTitle")</h1>
+    <p>@Model.Value("welcomeText")</p>
+
+    @{
+        var image = Model.Value<IPublishedContent>("image");
+        if (image != null)
+        {
+            var imageUrl = image.Url();
+        }
+    }
+
+    @if (image != null)
+    {
+        <img src="@image.Url()" alt="@image.Name" />
+    }
+</section>
