@@ -1,8 +1,11 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-    Layout = null;
+    Layout = "/Views/Shared/_LayoutMain.cshtml";
 }
+
+
+
 
 <section class="welcome-section">
     <h1>@Model.Value("welcomeTitle")</h1>
@@ -10,10 +13,6 @@
 
     @{
         var image = Model.Value<IPublishedContent>("image");
-        if (image != null)
-        {
-            var imageUrl = image.Url();
-        }
     }
 
     @if (image != null)

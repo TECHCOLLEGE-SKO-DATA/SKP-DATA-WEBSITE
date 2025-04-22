@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/shared.css" />
+</head>
+
+<body>
+
+    @Html.Partial("_LayoutSharedNavbar") <!-- Inkluder navbar -->
+
+    <main>
+        @RenderBody() <!-- Indhold fra din side -->
+    </main>
+
+</body>
+
+</html>
