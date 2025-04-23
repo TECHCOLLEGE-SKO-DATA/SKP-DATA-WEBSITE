@@ -2,26 +2,99 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = "/Views/Shared/_LayoutMain.cshtml";
-
-    <link rel="stylesheet" href="/css/HomePage.css" />
 }
 
-<section class="welcome-section">
-    <img>@Model.Value("backgroundImage")</img>
-    <h1 class="MainTitle">@Model.Value("welcomeTitle")</h1>
-    <p>@Model.Value("welcomeText")</p>
+<body>
+    <section class="welcome-section">
+        @{
+            var image = Model.Value<IPublishedContent>("image");
+            var backgroundImage = Model.Value<IPublishedContent>("backgroundImage");
+        }
 
-    @{
-        var image = Model.Value<IPublishedContent>("image");
-    }
+        @if (backgroundImage != null)
+        {
+            <img class="backgroundImage" src="@backgroundImage.Url()" alt="@backgroundImage.Name" />
+            <div class="backgroundOverlay"></div>
+        }
 
-    @if (image != null)
-    {
-        <img src="@image.Url()" alt="@image.Name" />
-    }
-</section>
+        <h1 class="MainTitle">@Model.Value("welcomeTitle")</h1>
+        <p class="welcomeDescription">@Model.Value("welcomeText")</p>
+        <a href="About.html" class="welcomeButton">Læs mere</a>
 
-@* School Mission & School Vision *@
-<section class="schoolm-schoolv">
 
-</section>
+        @if (image != null)
+        {
+            <img src="@image.Url()" alt="@image.Name" />
+        }
+    </section>
+    @* Mission + Vision Cards *@
+    <section class="schoolm-schoolv">
+        <div class="card-wrapper">
+
+            <div class="mission-card">
+                <h2 class="mission-title">@Model.Value("missionTitle")</h2>
+
+                <div class="mission-images">
+                    @{
+                        var missionImages = Model.Value<IEnumerable<IPublishedContent>>("missionImages");
+
+                        if (missionImages != null)
+                        {
+                            foreach (var missionImage in missionImages)
+                            {
+                                <img src="@missionImage.Url()" alt="@missionImage.Name" class="mission-image" />
+                            }
+                        }
+                    }
+                </div>
+
+                <p class="mission-text">@Model.Value("missionText")</p>
+            </div>
+
+            <div class="vision-card">
+                <h2 class="vision-title">@Model.Value("visionTitle")</h2>
+
+                <div class="vision-images">
+                    @{
+                        var visionImages = Model.Value<IEnumerable<IPublishedContent>>("visionImages");
+
+                        if (visionImages != null)
+                        {
+                            foreach (var visionImage in visionImages)
+                            {
+                                <img src="@visionImage.Url()" alt="@visionImage.Name" class="vision-image" />
+                            }
+                        }
+                    }
+                </div>
+
+                <p class="vision-text">@Model.Value("visionText")</p>
+            </div>
+
+            @* Help Card *@
+            <div class="help-card">
+                <h2 class="help-title">@Model.Value("helpTitle")</h2>
+
+                <div class="help-images">
+                    @{
+                        var helpImages = Model.Value<IEnumerable<IPublishedContent>>("helpImages");
+
+                        if (helpImages != null)
+                        {
+                            foreach (var helpImage in helpImages)
+                            {
+                                <img src="@helpImage.Url()" alt="@helpImage.Name" class="help-image" />
+                            }
+                        }
+                    }
+                </div>
+
+                <p class="help-text">@Model.Value("helpText")</p>
+
+                <a href="/pchjaelp" class="help-button">
+                    Læs mere
+                </a>
+            </div>
+        </div>
+    </section>
+</body>

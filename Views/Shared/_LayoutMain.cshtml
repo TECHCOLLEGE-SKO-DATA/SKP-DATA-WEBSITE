@@ -4,17 +4,24 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/shared.css" />
+    <link rel="stylesheet" href="/css/shared.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/HomePage.css" asp-append-version="true" />
 </head>
 
 <body>
 
+    <!-- Navbar inkluderes -->
     @Html.Partial("~/Views/Shared/_LayoutSharedNavbar.cshtml")
 
+    <!-- Hovedindhold -->
     <main>
         @RenderBody()
     </main>
 
+    <!-- Footer inkluderes -->
+    @Html.Partial("~/Views/Shared/_LayoutSharedFooter.cshtml")
+
+    <script src="/js/carousel.js" defer></script>
 </body>
 
 </html>

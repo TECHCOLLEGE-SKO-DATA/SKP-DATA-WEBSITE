@@ -1,6 +1,212 @@
-.MainTitle {
-  font-size: 500%;
+body {
   font-family: "Segoe UI", sans-serif;
-  text-shadow: 2px 2px 4px #000000;
+  background-color: rgb(226, 224, 224);
+  overflow-x: hidden;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  filter: blur(2px);
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0088ffa8;
+  z-index: -1;
+}
+
+.MainTitle {
+  font-size: 3rem;
   color: #ffffff;
+}
+
+.welcomeDescription {
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.welcomeButton {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background-color: #6cbced;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.welcomeButton:hover {
+  background-color: #3c8fc3;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mission-card,
+.vision-card,
+.help-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 90%;
+  max-width: 600px;
+  min-height: 550px;
+  transition: all 0.3s ease;
+  margin-top: 5rem;
+}
+
+.mission-card:hover,
+.vision-card:hover,
+.help-card:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.mission-title,
+.vision-title,
+.help-title {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+
+.mission-title::after,
+.vision-title::after,
+.help-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #0078d4;
+  transition: width 0.5s ease;
+}
+
+.mission-card:hover .mission-title,
+.vision-card:hover .vision-title,
+.help-card:hover .help-title {
+  color: #0078d4;
+  transform: translateY(-2px);
+}
+
+.mission-card:hover .mission-title::after,
+.vision-card:hover .vision-title::after,
+.help-card:hover .help-title::after {
+  width: 80%;
+}
+
+.mission-text,
+.vision-text,
+.help-text {
+  color: #555;
+  line-height: 1.6;
+}
+
+.mission-images,
+.vision-images,
+.help-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.mission-image,
+.vision-image,
+.help-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.5s ease;
+}
+
+.mission-image:hover,
+.vision-image:hover,
+.help-image:hover {
+  transform: scale(1.02);
+}
+
+.help-button {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background-color: #6cbced;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.help-button:hover {
+  background-color: #3c8fc3;
+}
+
+@media (min-width: 768px) {
+  .help-images,
+  .mission-images,
+  .vision-images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .mission-card,
+  .vision-card,
+  .help-card {
+    flex: 1;
+    margin-left: 1rem;
+    min-height: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mission-card,
+  .vision-card,
+  .help-card {
+    max-width: 600px;
+  }
 }
