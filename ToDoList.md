@@ -46,8 +46,7 @@ Vi uddanner fremtidens IT-specialister i programmering, IT-support og infrastruk
 
 [Partnere / Samarbejde / Kontaktinfo]
 
-CAROUSEL
-
+[CAROUSEL]
 🛠️ 1. Gør klar i Umbraco Backoffice
 
 Gå ind i Settings → Document Types → [din side, fx "Home Page"]:

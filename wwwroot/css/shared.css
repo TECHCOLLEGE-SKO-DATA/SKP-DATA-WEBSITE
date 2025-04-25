@@ -1,9 +1,18 @@
+@font-face {
+  font-family: "FrutigerLTStdBlack";
+  src: url("/fonts/FrutigerLTStd-Black.woff2") format("woff2"),
+    url("/fonts/FrutigerLTStd-Black.woff") format("woff"); /* fallback */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .navbar {
   background-color: #fff;
   border-bottom: 1px solid #cac8c8;
   padding: 1rem 2rem;
-  font-family: "Segoe UI", sans-serif;
-  position: absolute;
+  font-family: "FrutigerLTStdBlack", "Segoe UI", sans-serif;
+  font-display: swap;
   top: 0;
   width: 100%;
   z-index: 1000;

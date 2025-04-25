@@ -9,13 +9,28 @@
         @{
             var image = Model.Value<IPublishedContent>("image");
             var backgroundImage = Model.Value<IPublishedContent>("backgroundImage");
+
+            var backgroundImages = Model.Value<IEnumerable<IPublishedContent>>("backgroundImages");
         }
 
-        @if (backgroundImage != null)
+        @if (backgroundImages != null && backgroundImages.Any())
         {
-            <img class="backgroundImage" src="@backgroundImage.Url()" alt="@backgroundImage.Name" />
+            <div class="slideshow-container">
+                @foreach (var bgImage in backgroundImages)
+                {
+                    <div class="mySlides fade">
+                        <img class="backgroundImage" src="@bgImage.Url()" alt="@bgImage.Name" />
+                    </div>
+                }
+            </div>
+
             <div class="backgroundOverlay"></div>
         }
+
+
+
+
+
 
         <h1 class="MainTitle">@Model.Value("welcomeTitle")</h1>
         <p class="welcomeDescription">@Model.Value("welcomeText")</p>
@@ -27,6 +42,7 @@
             <img src="@image.Url()" alt="@image.Name" />
         }
     </section>
+
     @* Mission + Vision Cards *@
     <section class="schoolm-schoolv">
         <div class="card-wrapper">

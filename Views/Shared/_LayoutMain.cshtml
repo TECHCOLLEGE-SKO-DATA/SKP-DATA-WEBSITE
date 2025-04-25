@@ -6,10 +6,13 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="/css/shared.css" asp-append-version="true" />
     <link rel="stylesheet" href="/css/HomePage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/pcHelp.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
-
     <!-- Navbar inkluderes -->
     @Html.Partial("~/Views/Shared/_LayoutSharedNavbar.cshtml")
 
@@ -21,7 +24,7 @@
     <!-- Footer inkluderes -->
     @Html.Partial("~/Views/Shared/_LayoutSharedFooter.cshtml")
 
-    <script src="/js/carousel.js" defer></script>
+    <script src="/scripts/carousel.js" defer></script>
 </body>
 
 </html>

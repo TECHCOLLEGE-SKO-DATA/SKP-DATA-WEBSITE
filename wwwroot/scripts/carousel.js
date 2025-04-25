@@ -1,14 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let index = 0;
-  const images = document.querySelectorAll('.carousel-image');
 
-  if (images.length > 0) {
-    images[index].classList.add('active');
+let slideIndex = 0;
+showSlides();
 
-    setInterval(() => {
-      images[index].classList.remove('active');
-      index = (index + 1) % images.length;
-      images[index].classList.add('active');
-    }, 4000);
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
   }
-});
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 7000); // Change if mil secs aint good enough
+}
