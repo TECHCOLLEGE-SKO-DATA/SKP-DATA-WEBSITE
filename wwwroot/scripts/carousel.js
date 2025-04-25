@@ -11,5 +11,5 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}    
   slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 7000); // Change if mil secs aint good enough
+  setTimeout(showSlides, 10000); // Change if mil secs aint good enough
 }
