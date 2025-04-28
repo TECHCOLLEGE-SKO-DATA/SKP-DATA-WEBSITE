@@ -7,6 +7,10 @@
   font-display: swap;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .navbar {
   background-color: #fff;
   border-bottom: 1px solid #cac8c8;

@@ -5,112 +5,159 @@
 }
 
 <body>
-    <section class="welcome-section">
-        @{
-            var image = Model.Value<IPublishedContent>("image");
-            var backgroundImage = Model.Value<IPublishedContent>("backgroundImage");
 
-            var backgroundImages = Model.Value<IEnumerable<IPublishedContent>>("backgroundImages");
-        }
+    <section id="Home">
+        <section class="welcome-section">
+            @{
+                var image = Model.Value<IPublishedContent>("image");
+                var backgroundImages = Model.Value<IEnumerable<IPublishedContent>>("backgroundImages");
+            }
 
-        @if (backgroundImages != null && backgroundImages.Any())
-        {
-            <div class="slideshow-container">
-                @foreach (var bgImage in backgroundImages)
-                {
-                    <div class="mySlides fade">
-                        <img class="backgroundImage" src="@bgImage.Url()" alt="@bgImage.Name" />
+            @if (backgroundImages != null && backgroundImages.Any())
+            {
+                <div class="slideshow-container">
+                    @foreach (var bgImage in backgroundImages)
+                    {
+                        <img class="backgroundImage mySlides" src="@bgImage.Url()" alt="@bgImage.Name" />
+                    }
+                </div>
+
+                <div class="backgroundOverlay"></div>
+            }
+
+            <h1 class="MainTitle">@Model.Value("welcomeTitle")</h1>
+            <p class="welcomeDescription">@Model.Value("welcomeText")</p>
+            <a href="About.html" class="welcomeButton">Læs mere</a>
+
+            @if (image != null)
+            {
+                <img src="@image.Url()" alt="@image.Name" />
+            }
+        </section>
+
+
+    </section>
+
+
+
+
+
+    <section id="PC-Hjælpen">
+        <section class=" pch-services">
+            <h2 class="services-header">Hvad kan vi hjælpe dig med?</h2>
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-box">
+                    <h3>
+                        <img src="@Url.Content("~/assets/icons/wifi.svg")" alt="Internetforbindelse"
+                            class="service-icon" />
+                        @Model.Value("serviceTitle")
+                    </h3>
+                    <p>@Model.Value("servicesText")</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-box">
+                    <h3>
+                        <img src="@Url.Content("~/assets/icons/globe.svg")" alt="Internetforbindelse"
+                            class="service-icon" />
+                        @Model.Value("serviceTitle2")
+                    </h3>
+                    <p>@Model.Value("servicesText2")</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-box">
+                    <h3>
+                        <img src="@Url.Content("~/assets/icons/printer.svg")" alt="Printere" class="service-icon" />
+                        @Model.Value("serviceTitle3")
+                    </h3>
+                    <p>@Model.Value("servicesText3")</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-box">
+                    <h3>
+                        <img src="@Url.Content("~/assets/icons/troubleshoot.svg")" alt="Fejlfinding"
+                            class="service-icon" />
+                        @Model.Value("serviceTitle4")
+                    </h3>
+                    <p>@Model.Value("servicesText4")</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+
+
+    <section id=" Om-os">
+        <section class="schoolm-schoolv">
+            <div class="card-wrapper">
+
+                <div class="mission-card">
+                    <h2 class="mission-title">@Model.Value("missionTitle")</h2>
+
+                    <div class="mission-images">
+                        @{
+                            var missionImages = Model.Value<IEnumerable<IPublishedContent>>("missionImages");
+
+                            if (missionImages != null)
+                            {
+                                foreach (var missionImage in missionImages)
+                                {
+                                    <img src="@missionImage.Url()" alt="@missionImage.Name" class="mission-image" />
+                                }
+                            }
+                        }
                     </div>
-                }
+
+                    <p class="mission-text">@Model.Value("missionText")</p>
+                </div>
+
+                <div class="vision-card">
+                    <h2 class="vision-title">@Model.Value("visionTitle")</h2>
+
+                    <div class="vision-images">
+                        @{
+                            var visionImages = Model.Value<IEnumerable<IPublishedContent>>("visionImages");
+
+                            if (visionImages != null)
+                            {
+                                foreach (var visionImage in visionImages)
+                                {
+                                    <img src="@visionImage.Url()" alt="@visionImage.Name" class="vision-image" />
+                                }
+                            }
+                        }
+                    </div>
+
+                    <p class="vision-text">@Model.Value("visionText")</p>
+                </div>
+
+                @* Help Card *@
+                <div class="help-card">
+                    <h2 class="help-title">@Model.Value("helpTitle")</h2>
+
+                    <div class="help-images">
+                        @{
+                            var helpImages = Model.Value<IEnumerable<IPublishedContent>>("helpImages");
+
+                            if (helpImages != null)
+                            {
+                                foreach (var helpImage in helpImages)
+                                {
+                                    <img src="@helpImage.Url()" alt="@helpImage.Name" class="help-image" />
+                                }
+                            }
+                        }
+                    </div>
+
+                    <p class="help-text">@Model.Value("helpText")</p>
+                </div>
             </div>
-
-            <div class="backgroundOverlay"></div>
-        }
-
-
-
-
-
-
-        <h1 class="MainTitle">@Model.Value("welcomeTitle")</h1>
-        <p class="welcomeDescription">@Model.Value("welcomeText")</p>
-        <a href="About.html" class="welcomeButton">Læs mere</a>
-
-
-        @if (image != null)
-        {
-            <img src="@image.Url()" alt="@image.Name" />
-        }
+        </section>
     </section>
 
-    @* Mission + Vision Cards *@
-    <section class="schoolm-schoolv">
-        <div class="card-wrapper">
 
-            <div class="mission-card">
-                <h2 class="mission-title">@Model.Value("missionTitle")</h2>
-
-                <div class="mission-images">
-                    @{
-                        var missionImages = Model.Value<IEnumerable<IPublishedContent>>("missionImages");
-
-                        if (missionImages != null)
-                        {
-                            foreach (var missionImage in missionImages)
-                            {
-                                <img src="@missionImage.Url()" alt="@missionImage.Name" class="mission-image" />
-                            }
-                        }
-                    }
-                </div>
-
-                <p class="mission-text">@Model.Value("missionText")</p>
-            </div>
-
-            <div class="vision-card">
-                <h2 class="vision-title">@Model.Value("visionTitle")</h2>
-
-                <div class="vision-images">
-                    @{
-                        var visionImages = Model.Value<IEnumerable<IPublishedContent>>("visionImages");
-
-                        if (visionImages != null)
-                        {
-                            foreach (var visionImage in visionImages)
-                            {
-                                <img src="@visionImage.Url()" alt="@visionImage.Name" class="vision-image" />
-                            }
-                        }
-                    }
-                </div>
-
-                <p class="vision-text">@Model.Value("visionText")</p>
-            </div>
-
-            @* Help Card *@
-            <div class="help-card">
-                <h2 class="help-title">@Model.Value("helpTitle")</h2>
-
-                <div class="help-images">
-                    @{
-                        var helpImages = Model.Value<IEnumerable<IPublishedContent>>("helpImages");
-
-                        if (helpImages != null)
-                        {
-                            foreach (var helpImage in helpImages)
-                            {
-                                <img src="@helpImage.Url()" alt="@helpImage.Name" class="help-image" />
-                            }
-                        }
-                    }
-                </div>
-
-                <p class="help-text">@Model.Value("helpText")</p>
-
-                <a href="/pchjaelp" class="help-button">
-                    Læs mere
-                </a>
-            </div>
-        </div>
-    </section>
 </body>
