@@ -5,7 +5,6 @@
 }
 
 <body>
-
     <section id="Home">
         <section class="welcome-section">
             @{
@@ -91,73 +90,111 @@
 
 
 
-    <section id=" Om-os">
-        <section class="schoolm-schoolv">
-            <div class="card-wrapper">
+    <section id="Om-os">
+        <div class="slideshow-container1">
+            <section class="schoolm-schoolv">
+                <div class="card-wrapper">
+                    <div class="mySlide fade">
+                        <div class="mission-card">
+                            <h2 class="mission-title">@Model.Value("missionTitle")</h2>
 
-                <div class="mission-card">
-                    <h2 class="mission-title">@Model.Value("missionTitle")</h2>
+                            <div class="mission-images">
+                                @{
+                                    var missionImages = Model.Value<IEnumerable<IPublishedContent>>("missionImages");
 
-                    <div class="mission-images">
-                        @{
-                            var missionImages = Model.Value<IEnumerable<IPublishedContent>>("missionImages");
-
-                            if (missionImages != null)
-                            {
-                                foreach (var missionImage in missionImages)
-                                {
-                                    <img src="@missionImage.Url()" alt="@missionImage.Name" class="mission-image" />
+                                    if (missionImages != null)
+                                    {
+                                        foreach (var missionImage in missionImages)
+                                        {
+                                            <img src="@missionImage.Url()" alt="@missionImage.Name" class="mission-image" />
+                                        }
+                                    }
                                 }
-                            }
-                        }
+                            </div>
+
+                            <p class="mission-text">@Model.Value("missionText")</p>
+                        </div>
                     </div>
 
-                    <p class="mission-text">@Model.Value("missionText")</p>
-                </div>
+                    <div class="mySlide fade">
+                        <div class="vision-card">
+                            <h2 class="vision-title">@Model.Value("visionTitle")</h2>
 
-                <div class="vision-card">
-                    <h2 class="vision-title">@Model.Value("visionTitle")</h2>
+                            <div class="vision-images">
+                                @{
+                                    var visionImages = Model.Value<IEnumerable<IPublishedContent>>("visionImages");
 
-                    <div class="vision-images">
-                        @{
-                            var visionImages = Model.Value<IEnumerable<IPublishedContent>>("visionImages");
-
-                            if (visionImages != null)
-                            {
-                                foreach (var visionImage in visionImages)
-                                {
-                                    <img src="@visionImage.Url()" alt="@visionImage.Name" class="vision-image" />
+                                    if (visionImages != null)
+                                    {
+                                        foreach (var visionImage in visionImages)
+                                        {
+                                            <img src="@visionImage.Url()" alt="@visionImage.Name" class="vision-image" />
+                                        }
+                                    }
                                 }
-                            }
-                        }
+                            </div>
+
+                            <p class="vision-text">@Model.Value("visionText")</p>
+                        </div>
+
                     </div>
 
-                    <p class="vision-text">@Model.Value("visionText")</p>
-                </div>
 
-                @* Help Card *@
-                <div class="help-card">
-                    <h2 class="help-title">@Model.Value("helpTitle")</h2>
 
-                    <div class="help-images">
-                        @{
-                            var helpImages = Model.Value<IEnumerable<IPublishedContent>>("helpImages");
+                    <div class="mySlide fade">
+                        <div class="help-card">
+                            <h2 class="help-title">@Model.Value("helpTitle")</h2>
 
-                            if (helpImages != null)
-                            {
-                                foreach (var helpImage in helpImages)
-                                {
-                                    <img src="@helpImage.Url()" alt="@helpImage.Name" class="help-image" />
+                            <div class="help-images">
+                                @{
+                                    var helpImages = Model.Value<IEnumerable<IPublishedContent>>("helpImages");
+
+                                    if (helpImages != null)
+                                    {
+                                        foreach (var helpImage in helpImages)
+                                        {
+                                            <img src="@helpImage.Url()" alt="@helpImage.Name" class="help-image" />
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    </div>
+                            </div>
 
-                    <p class="help-text">@Model.Value("helpText")</p>
+                            <p class="help-text">@Model.Value("helpText")</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
     </section>
 
+    <section id="Kontakt" class="contact-container">
+        <div class="contact-section">
+            <h2 class="section-heading">@Model.Value("contactTitle")</h2>
+            <p class="section-description">@Model.Value("contactText")</p>
 
+            <div class="contact-item">
+                <h3 class="item-title">@Model.Value("emailTitle")</h3>
+                <input type="text" class="contact-input" placeholder="@Model.Value("emailText")" />
+            </div>
+
+            <div class="contact-item">
+                <h3 class="item-title">@Model.Value("phoneTitle")</h3>
+                <input type="text" class="contact-input" placeholder="@Model.Value("phoneText")" />
+            </div>
+
+            <div class="contact-item">
+                <h3 class="item-title">@Model.Value("messageTitle")</h3>
+                <input type="text" class="contact-input" placeholder="@Model.Value("messageText")" />
+            </div>
+
+            <input type="submit" class="contact-submit" value="Send" />
+        </div>
+    </section>
 </body>

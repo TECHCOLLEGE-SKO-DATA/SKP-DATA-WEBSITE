@@ -1,23 +1,46 @@
-let slideIndex = 0;
-let slides;
+let backgroundIndex = 0;
+let contentIndex = 0;
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    slides = document.getElementsByClassName("mySlides");
-    if (slides.length > 0) {
-        showSlides();
+document.addEventListener('DOMContentLoaded', () => {
+    const backgroundSlides = document.getElementsByClassName("mySlides");
+    const contentSlides = document.getElementsByClassName("mySlide");
+    const dots = document.getElementsByClassName("dot");
+
+    if (backgroundSlides.length > 0) {
+        cycleBackgroundSlides(backgroundSlides);
+    }
+
+    if (contentSlides.length > 0) {
+        cycleContentSlides(contentSlides, dots);
     }
 });
 
-function showSlides() {
+function cycleBackgroundSlides(slides) {
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.opacity = "0";
-        slides[i].style.transition = "opacity 1.5s ease"; 
+        slides[i].style.transition = "opacity 1.5s ease";
     }
 
-    slideIndex++;
-    if (slideIndex > slides.length) { slideIndex = 1 }
+    backgroundIndex = (backgroundIndex + 1) > slides.length ? 1 : backgroundIndex + 1;
+    slides[backgroundIndex - 1].style.opacity = "1";
 
-    slides[slideIndex - 1].style.opacity = "1";
+    setTimeout(() => cycleBackgroundSlides(slides), 7000);
+}
 
-    setTimeout(showSlides, 7000);
+function cycleContentSlides(slides, dots) {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    contentIndex = (contentIndex + 1) > slides.length ? 1 : contentIndex + 1;
+    slides[contentIndex - 1].style.display = "block";
+
+    if (dots.length === slides.length) {
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active");
+        }
+        dots[contentIndex - 1].classList.add("active");
+    }
+
+    setTimeout(() => cycleContentSlides(slides, dots), 3000);
 }

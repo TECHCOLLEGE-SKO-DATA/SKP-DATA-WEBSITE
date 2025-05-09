@@ -4,6 +4,11 @@ body {
   overflow-x: hidden;
   margin: 0;
   min-height: 100vh;
+  width: auto;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /* ========== WELCOME SECTION (med slideshow baggrund) ========== */
@@ -85,13 +90,11 @@ body {
   background-color: #3c8fc3;
 }
 
-/* ========== CARDS ========== */
-
+/* ========== BASE CARD STYLES ========== */
 .card-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
   gap: 2rem;
+  padding: 2rem;
 }
 
 .mission-card,
@@ -103,21 +106,8 @@ body {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 90%;
-  max-width: 600px;
-  min-height: 550px;
-  transition: all 0.3s ease;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
-.mission-card:hover,
-.vision-card:hover,
-.help-card:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  height: 647px;
 }
 
 .mission-title,
@@ -128,47 +118,12 @@ body {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: #333;
-  transition: color 0.5s ease, transform 0.5s ease;
-}
-
-.mission-title::after,
-.vision-title::after,
-.help-title::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  height: 2px;
-  width: 0%;
-  background-color: #0078d4;
-  transition: width 0.5s ease;
-}
-
-.mission-card:hover .mission-title,
-.vision-card:hover .vision-title,
-.help-card:hover .help-title {
-  color: #0078d4;
-  transform: translateY(-2px);
-}
-
-.mission-card:hover .mission-title::after,
-.vision-card:hover .vision-title::after,
-.help-card:hover .help-title::after {
-  width: 80%;
-}
-
-.mission-text,
-.vision-text,
-.help-text {
-  color: #555;
-  line-height: 1.6;
 }
 
 .mission-images,
 .vision-images,
 .help-images {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 0.5rem;
   width: 100%;
 }
@@ -177,64 +132,120 @@ body {
 .vision-image,
 .help-image {
   width: 100%;
-  max-height: 200px;
-  object-fit: cover;
+  height: 200px; /* Ensures all images are the same height */
+  object-fit: cover; /* Make sure images cover the space */
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: transform 0.5s ease;
 }
 
+/* Hover effects */
 .mission-image:hover,
 .vision-image:hover,
 .help-image:hover {
   transform: scale(1.02);
+  background-color: rgb(255, 0, 0);
+}
+.contact-container {
+  background: #f0f0f0;
+  padding: 60px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
 }
 
-.help-button {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
+.contact-section {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffffcc;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.contact-input::placeholder {
+  color: #888;
+}
+
+.contact-submit {
+  width: 100%;
   background-color: #6cbced;
   color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
+  padding: 14px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-.help-button:hover {
+.contact-submit:hover {
   background-color: #3c8fc3;
+}
+
+.section-heading {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
 
 @media (min-width: 768px) {
+  .card-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .mission-card,
+  .vision-card,
+  .help-card {
+    flex: 1 1 30%;
+    height: 647px; /*Force cards to stretch equally */
+    max-width: 600px;
+  }
+
   .help-images,
   .mission-images,
   .vision-images {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem; /* Optional */
   }
 
-  .card-wrapper {
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: wrap;
+  .slideshow-container1 {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
   }
 
-  .mission-card,
-  .vision-card,
-  .help-card {
-    flex: 1;
-    margin-left: 1rem;
-    min-height: 100%;
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
   }
-}
 
-@media (min-width: 1024px) {
-  .mission-card,
-  .vision-card,
-  .help-card {
-    max-width: 600px;
+  .active {
+    background-color: #717171;
   }
 }
